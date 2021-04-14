@@ -1,0 +1,21 @@
+version: "3.9"  
+services:
+  web:
+    build: .
+    ports:
+      - "3333:3333"
+    volumes:
+        - .:/home/post
+        - /home/post/node_modules
+
+  database:
+    image: postgres
+    container_name: post_db
+    environment:
+        POSTGRES_DB: "api-post"
+        POSTGRES_USER: "postgres"
+        POSTGRES_PASSWORD: "root"
+    ports:
+        - "5432:5432"
+  
+          
